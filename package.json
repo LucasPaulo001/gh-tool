@@ -1,0 +1,31 @@
+{
+  "name": "gh-tool",
+  "version": "1.0.0",
+  "description": "Ferramenta CLI de manipulação para ferramentas github",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tsx watch src/app.ts",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LucasPaulo001/gh-tool.git"
+  },
+  "keywords": [],
+  "author": "Lucas <lp152659@gmail.com> (https://lucaspaulo001.github.io/Portfolio/)",
+  "license": "MIT",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/LucasPaulo001/gh-tool/issues"
+  },
+  "homepage": "https://github.com/LucasPaulo001/gh-tool#readme",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.3"
+  }
+}
