@@ -4,6 +4,7 @@ import path from "path";
 const TASK_FILE = "gh-tool-tasks.md";
 const GITIGNORE = ".gitignore";
 
+//Gerar arquivo local com as as issues
 export async function generateArchiveLocal(content: string) {
   await ensureGitignore();
   await appendTask(content);
@@ -26,6 +27,7 @@ async function ensureGitignore() {
   }
 }
 
+//Escrevendo no arquivo
 async function appendTask(content: string) {
   try {
     const existing = await fs.readFile(TASK_FILE, "utf8");
@@ -41,4 +43,19 @@ async function appendTask(content: string) {
     // arquivo não existe
     await fs.writeFile(TASK_FILE, content.trim() + "\n");
   }
+}
+
+//Atualizar issue
+export async function parserTasks(){
+  const content = await fs.readFile("gh-tool-tasks.md", "utf8");
+
+  const tasks = content
+    .split("\n")
+    .filter(line => line.trim().startsWith("- ["))
+    .map(line => ({
+      done: line.trim().startsWith(`- [x]`),
+      text: line.replace(/- \[[ x]\] /, "")
+    }))
+
+    return tasks;
 }

@@ -1,4 +1,5 @@
 import { IssuePayload } from "../../types/issue.type";
+import { generateArchiveLocal } from "../services/gh-tool-task.js";
 
 interface bugTarget {
   title: string;
@@ -6,6 +7,12 @@ interface bugTarget {
 }
 
 export function bugTarget({ title, description }: bugTarget): IssuePayload {
+  generateArchiveLocal(`
+### Bug ${title}
+
+- [ ] ${description}
+
+    `)
   return {
     title: `${title}`,
     body: `
@@ -27,6 +34,7 @@ export function bugTarget({ title, description }: bugTarget): IssuePayload {
             - Node:
             - Browser:
         `,
-    labels: ["bug"],
+    labels: ["bug"]
   };
+  
 }
